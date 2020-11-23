@@ -13,5 +13,88 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{b42750c8-a529-4add-a8aa-069a1bcb4467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Internal">
+      <UniqueIdentifier>{07695fc0-a6a2-40b3-aac6-41a7cf56a487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Config">
+      <UniqueIdentifier>{d4237b8a-ec87-441f-a743-9db905d60835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces\Input">
+      <UniqueIdentifier>{a57013d2-bdc2-41d6-9f18-431a162892c9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GenericInterfaceForSensor.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericInterfaceForCamera.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="CommTypeConfig.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionDetectionParams.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="SysMonitoringConfig.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyConsumpSensorConfig.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputInfoConfig.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyConsumpParamConfig.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInteractConfig.hpp">
+      <Filter>Header Files\Interfaces\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Input_UI_web.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractSpecifier.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionBusinnessLogic.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionDetailedInfo.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputSpecifier.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemMonitoring.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionSensorComm.hpp">
+      <Filter>Header Files\Interfaces\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyConsumpSensorComm.hpp">
+      <Filter>Header Files\Interfaces\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionCommInfo.hpp">
+      <Filter>Header Files\Interfaces\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyConsump2SysInfo.hpp">
+      <Filter>Header Files\Interfaces\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion2SysInfo.hpp">
+      <Filter>Header Files\Interfaces\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericWarnOutput.hpp">
+      <Filter>Header Files\Interfaces\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericInteractOutput.hpp">
+      <Filter>Header Files\Interfaces\Internal</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyConsumpBusinnessLogic.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

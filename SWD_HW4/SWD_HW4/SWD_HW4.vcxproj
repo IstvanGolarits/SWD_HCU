@@ -21,32 +21,32 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7D174E7F-7D56-4135-97C6-FAF30E1DC6E5}</ProjectGuid>
     <RootNamespace>SWD_HW4</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -110,6 +110,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CommTypeConfig.hpp" />
+    <ClInclude Include="EnergyConsump2SysInfo.hpp" />
+    <ClInclude Include="EnergyConsumpBusinnessLogic.hpp" />
+    <ClInclude Include="EnergyConsumpParamConfig.hpp" />
+    <ClInclude Include="EnergyConsumpSensorComm.hpp" />
+    <ClInclude Include="EnergyConsumpSensorConfig.hpp" />
+    <ClInclude Include="GenericInteractOutput.hpp" />
+    <ClInclude Include="GenericInterfaceForCamera.hpp" />
+    <ClInclude Include="GenericInterfaceForSensor.hpp" />
+    <ClInclude Include="GenericWarnOutput.hpp" />
+    <ClInclude Include="Input_UI_web.hpp" />
+    <ClInclude Include="InteractSpecifier.hpp" />
+    <ClInclude Include="Motion2SysInfo.hpp" />
+    <ClInclude Include="MotionBusinnessLogic.hpp" />
+    <ClInclude Include="MotionCommInfo.hpp" />
+    <ClInclude Include="MotionDetailedInfo.hpp" />
+    <ClInclude Include="MotionDetectionParams.hpp" />
+    <ClInclude Include="MotionSensorComm.hpp" />
+    <ClInclude Include="OutputInfoConfig.hpp" />
+    <ClInclude Include="OutputSpecifier.hpp" />
+    <ClInclude Include="SysMonitoringConfig.hpp" />
+    <ClInclude Include="SystemMonitoring.hpp" />
+    <ClInclude Include="UserInteractConfig.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
