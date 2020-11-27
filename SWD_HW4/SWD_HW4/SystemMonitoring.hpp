@@ -14,6 +14,11 @@
 namespace istvan_richard
 {
 
+    class CSystemMonitoring
+    {
+
+    };
+
 }//end of namespace
 
 #endif

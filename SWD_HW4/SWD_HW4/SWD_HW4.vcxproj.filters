@@ -25,6 +25,12 @@
     <Filter Include="Header Files\Interfaces\Input">
       <UniqueIdentifier>{a57013d2-bdc2-41d6-9f18-431a162892c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{fdef86aa-125f-4a5f-8033-67f04db91dea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Logics">
+      <UniqueIdentifier>{eaa27dc4-fe4d-4b32-94ee-e7dd2914f794}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GenericInterfaceForSensor.hpp">
@@ -96,5 +102,16 @@
     <ClInclude Include="EnergyConsumpBusinnessLogic.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CustomTypes.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

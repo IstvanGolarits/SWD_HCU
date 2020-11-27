@@ -14,6 +14,67 @@
 
 namespace istvan_richard
 {
+    TEST(SystemMonitoring, TestingDefaults)
+    {
+        //ARRANGE
 
+        //ACT
+
+        //ASSERT
+    }
+
+    TEST(SystemMonitoring, TestingWholeSysOnOff)
+    {
+        //ARRANGE
+
+        //ACT
+
+        //ASSERT
+    }
+
+    TEST(SystemMonitoring, TestingEnergyConsumptionOnOff)
+    {
+        //ARRANGE
+
+        //ACT
+
+        //ASSERT
+    }
+
+    TEST(SystemMonitoring, TestingEnergyOverloadOutOfTime)
+    {
+        //ARRANGE
+
+        //ACT
+
+        //ASSERT
+    }
+
+    TEST(SystemMonitoring, TestingEnergyOverloadInTimeFeatureOff)
+    {
+        //ARRANGE
+
+        //ACT
+
+        //ASSERT
+    }
+
+    TEST(SystemMonitoring, TestingEnergyOverloadWarning)
+    {
+        //ARRANGE
+
+        //ACT
+
+        //ASSERT
+    }
+
+    TEST(SystemMonitoring, TestingEnergyOverloadInteract)
+    {
+        //ARRANGE
+
+        //ACT
+
+        //ASSERT
+    }
 
 }//end of namespace

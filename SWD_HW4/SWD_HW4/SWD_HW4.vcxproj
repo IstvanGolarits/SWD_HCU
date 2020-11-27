@@ -111,6 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CommTypeConfig.hpp" />
+    <ClInclude Include="CustomTypes.hpp" />
     <ClInclude Include="EnergyConsump2SysInfo.hpp" />
     <ClInclude Include="EnergyConsumpBusinnessLogic.hpp" />
     <ClInclude Include="EnergyConsumpParamConfig.hpp" />
@@ -122,6 +123,7 @@
     <ClInclude Include="GenericWarnOutput.hpp" />
     <ClInclude Include="Input_UI_web.hpp" />
     <ClInclude Include="InteractSpecifier.hpp" />
+    <ClInclude Include="Main.hpp" />
     <ClInclude Include="Motion2SysInfo.hpp" />
     <ClInclude Include="MotionBusinnessLogic.hpp" />
     <ClInclude Include="MotionCommInfo.hpp" />
@@ -133,6 +135,9 @@
     <ClInclude Include="SysMonitoringConfig.hpp" />
     <ClInclude Include="SystemMonitoring.hpp" />
     <ClInclude Include="UserInteractConfig.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
