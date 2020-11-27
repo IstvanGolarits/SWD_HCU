@@ -90,14 +90,14 @@ namespace istvan_richard
         //ASSERT
         EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::SUS);
         //ARRANGE
-        l_dailyTime = { std::string("MONDAY"), 15, 0, (l_EneryConsumpParamConfig.fGetTimeSpawn()-0.5) };
+        l_dailyTime = { std::string("MONDAY"), 15, 0, int(l_EneryConsumpParamConfig.fGetTimeSpawn()-1U) };
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
         EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::SUS);
         //ARRANGE
         l_EnergyConsumpSensor.fReadConsumedPower(l_EneryConsumpParamConfig.fGetConsumedPowerThreshold() - 1);
-        l_dailyTime = { std::string("MONDAY"), 15, 0, (l_EneryConsumpParamConfig.fGetTimeSpawn() + 0.5) };
+        l_dailyTime = { std::string("MONDAY"), 15, 0, int(l_EneryConsumpParamConfig.fGetTimeSpawn() + 1U) };
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT

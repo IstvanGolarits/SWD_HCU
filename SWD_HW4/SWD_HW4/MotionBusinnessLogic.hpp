@@ -20,25 +20,36 @@ namespace istvan_richard
     class CMotionBusinnessLogic
     {
     public:
-        CMotionBusinnessLogic(const CMotionCommInfo &f_motionCommInfo_r, const CMotionDetectionParam &f_motionDetectParam_r,
+        CMotionBusinnessLogic(CMotionCommInfo &f_motionCommInfo_r, CMotionDetectionParam &f_motionDetectParam_r,
             TimeStamp& f_timeStamp_r, CMotion2SysInfo& f_MotionToSysInfo_r):
             m_motionCommInfo_r(f_motionCommInfo_r),
             m_motionDetectParam_r(f_motionDetectParam_r),
             m_TimeStamp_r(f_timeStamp_r),
-            m_MotionToSysInfo_r(f_MotionToSysInfo_r)
+            m_MotionToSysInfo_r(f_MotionToSysInfo_r),
+            m_StartOfMovement(),
+            m_WasAlreadyMoveDetect_b(false)
         {}
 
         void fUpdateMotionLogic();
 
     private:
+        //functions
+        int fGetTimeDiffInSec();
+        int fTimeInSecBetweenTwoDates(DailyDateTime& f_RefStamp_r, DailyDateTime& f_currentStamp_r);
+        bool fIsInValidTime(const float& f_thresholdValue_r);
+        bool fIsAfterEndTime(const float& f_thresholdValue_r);
+        bool fIsBeforeStartTime(const float& f_thresholdValue_r);
+        void fCheckForMotion();
+        void fSetWarningState();
 
-        bool fIsInValidTime();
-
-        const CMotionCommInfo& m_motionCommInfo_r;
-        const CMotionDetectionParam& m_motionDetectParam_r;
+        //variables
+        CMotionCommInfo& m_motionCommInfo_r;
+        CMotionDetectionParam& m_motionDetectParam_r;
         TimeStamp& m_TimeStamp_r;
         CMotion2SysInfo& m_MotionToSysInfo_r;
 
+        DailyDateTime m_StartOfMovement;
+        bool m_WasAlreadyMoveDetect_b;
     };
 
 }//end of namespace

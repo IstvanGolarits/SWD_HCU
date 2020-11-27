@@ -72,7 +72,7 @@ namespace istvan_richard
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
-        EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::WARNING_OUT_OG_TIME);
+        EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::WARNING_OUT_OF_TIME);
     }
 
     TEST(MotionBusinnessTest, TestingInValidMotionInValidTime)

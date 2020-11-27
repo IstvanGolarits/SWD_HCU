@@ -102,12 +102,33 @@ namespace istvan_richard
         {
             return this->m_Seconds_i32;
         }
+
     private:
         std::string m_Day_s;
         int m_NumOfDay_i32;
         int m_Hour_i32;
         int m_Minutes_i32;
         int m_Seconds_i32;
+    };
+
+    class TimeStamp
+    {
+    public:
+        //C'Tor
+       TimeStamp():
+           m_CurrentTime(std::string("MONDAY"), 12, 0, 0)
+       {}
+       void fUpdateCurrentTime(const DailyDateTime& f_CurrTimeInfo_r)
+       {
+           m_CurrentTime = f_CurrTimeInfo_r;
+       }
+       DailyDateTime fGetCurrentTime()
+       {
+           return m_CurrentTime;
+       }
+    private:
+        DailyDateTime m_CurrentTime;
+
     };
 
     class DateTime
@@ -195,29 +216,49 @@ namespace istvan_richard
         {
             return m_Days_adt;
         }
+
+        DailyDateTime fGetCurrentDaySetup(TimeStamp& f_TimeStamp_r)
+        {
+            const std::string l_currentDay_s = f_TimeStamp_r.fGetCurrentTime().fGetDay();
+            for (auto l_it_p = this->m_Days_adt.begin();
+                l_it_p != this->m_Days_adt.end();
+                l_it_p++)
+            {
+                std::string l_refDay_s = l_it_p->fGetDay();
+                if (l_refDay_s == l_currentDay_s)
+                {
+                    return *l_it_p;
+                }
+            }
+            DailyDateTime l_ret(std::string(""), 0, 0, 0);
+            return l_ret;
+            std::printf("NoMatchingDaysInArray");
+        }
+
+        int fGetTimeInSecToRef_sameDay(TimeStamp l_currentTime)
+        {
+            auto l_refDay(fGetCurrentDaySetup(l_currentTime));
+            int l_ret_i32(0);
+            l_ret_i32 += 60 * 60 * (l_refDay.fGetHour() - l_currentTime.fGetCurrentTime().fGetHour());
+            l_ret_i32 += 60 * (l_refDay.fGetMinute() - l_currentTime.fGetCurrentTime().fGetMinute());
+            l_ret_i32 += (l_refDay.fGetSec() - l_currentTime.fGetCurrentTime().fGetSec());
+            return l_ret_i32;
+        }
+
+        int fGetTimeInSecSinceRef_sameDay(TimeStamp l_currentTime)
+        {
+            auto l_refDay(fGetCurrentDaySetup(l_currentTime));
+            int l_ret_i32(0);
+            l_ret_i32 += 60 * 60 * (l_currentTime.fGetCurrentTime().fGetHour() - l_refDay.fGetHour());
+            l_ret_i32 += 60 * (l_currentTime.fGetCurrentTime().fGetMinute() - l_refDay.fGetMinute() );
+            l_ret_i32 += (l_currentTime.fGetCurrentTime().fGetSec() - l_refDay.fGetSec());
+            return l_ret_i32;
+        }
+
     private:
         std::vector<DailyDateTime> m_Days_adt;
     };
 
-    class TimeStamp
-    {
-    public:
-        //C'Tor
-       TimeStamp():
-           m_CurrentTime(std::string("MONDAY"), 12, 0, 0)
-       {}
-       void fUpdateCurrentTime(const DailyDateTime& f_CurrTimeInfo_r)
-       {
-           m_CurrentTime = f_CurrTimeInfo_r;
-       }
-       DailyDateTime fGetCurrentTime()
-       {
-           return m_CurrentTime;
-       }
-    private:
-        DailyDateTime m_CurrentTime;
-
-    };
     
 }//end of namespace
 

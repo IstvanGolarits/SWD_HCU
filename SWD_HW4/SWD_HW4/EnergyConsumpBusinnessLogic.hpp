@@ -37,21 +37,6 @@ namespace istvan_richard
             m_StartTimeStampOfTooHighenergy(std::string(" "), 0, 0, 0)
         {}
 
-        //CEnergyConsumptionLogic(const CEnergyConsumptionLogic& f__r):
-        //    m_EneryConsumpParamConfig_r(),
-        //    m_EnergyConsumpSensorConfi_r(),
-        //    m_EnergyConsumpSensor_r(),
-        //    m_TimeStamp_r()
-        //{
-        //    if (this != &f__r)
-        //    {
-        //        this->m_EneryConsumpParamConfig_r = f__r.m_EneryConsumpParamConfig_r;
-        //        this->m_EnergyConsumpSensorConfi_r = f__r.m_EnergyConsumpSensorConfi_r;
-        //        this->m_EnergyConsumpSensor_r = f__r.m_EnergyConsumpSensor_r;
-        //        this->m_TimeStamp_r = f__r.m_TimeStamp_r;
-        //    }
-        //}
-
         void fUpdateEnergyConsumptionLogic();
 
     private:

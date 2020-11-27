@@ -86,11 +86,11 @@ namespace istvan_richard
         {
             return m_NumberOfRetry_i32;
         }
-        const DateTime fGetStartOfMonitoring() const
+        DateTime fGetStartOfMonitoring()
         {
             return m_StartOfMonitoring_dt;
         }
-        const DateTime fGetEndOfMonitoring() const
+        DateTime fGetEndOfMonitoring()
         {
             return m_EndOfMonitoring_dt;
         }
