@@ -51,7 +51,6 @@ namespace istvan_richard
             //No movement -> All_OK
             m_MotionToSysInfo_r.fUpdateState(CMotion2SysInfo::E_StateOfMotionBussiness::ALL_OK);
         }
-        return ;
     }
 
     bool CMotionBusinnessLogic::fIsInValidTime()

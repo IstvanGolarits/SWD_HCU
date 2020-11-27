@@ -11,9 +11,59 @@
 #ifndef ENERGY_CONSUMP_BUSINNESS_LOGIC_HPP
 #define ENERGY_CONSUMP_BUSINNESS_LOGIC_HPP
 
+#include "EnergyConsump2SysInfo.hpp"
+#include "EnergyConsumpParamConfig.hpp"
+#include "EnergyConsumpSensorComm.hpp"
+#include "EnergyConsumpSensorConfig.hpp"
+#include "CommTypeConfig.hpp"
+#include "CustomTypes.hpp"
+
 namespace istvan_richard
 {
+    class CEnergyConsumptionLogic
+    {
+    public:
+        CEnergyConsumptionLogic(
+            const CEnergyConsumptionParamConfig& f_EneryConsumpParamConfig_r,
+            const CEnergyConsumptionSensorConfig& f_EnergyConsumpSensorConfi_r,
+            const CEnergyConsumptionSensorComm& f_EnergyConsumpSensor_r,
+            TimeStamp& f_TimeStamp_r,
+            CEnergyConsump2SysInfo& f_Energy2sysInfo_r):
+            m_EneryConsumpParamConfig_r(f_EneryConsumpParamConfig_r),
+            m_EnergyConsumpSensorConfi_r(f_EnergyConsumpSensorConfi_r),
+            m_EnergyConsumpSensor_r(f_EnergyConsumpSensor_r),
+            m_TimeStamp_r(f_TimeStamp_r),
+            m_EnergyConst2SysInfo_r(f_Energy2sysInfo_r),
+            m_StartTimeStampOfTooHighenergy(std::string(" "), 0, 0, 0)
+        {}
 
+        //CEnergyConsumptionLogic(const CEnergyConsumptionLogic& f__r):
+        //    m_EneryConsumpParamConfig_r(),
+        //    m_EnergyConsumpSensorConfi_r(),
+        //    m_EnergyConsumpSensor_r(),
+        //    m_TimeStamp_r()
+        //{
+        //    if (this != &f__r)
+        //    {
+        //        this->m_EneryConsumpParamConfig_r = f__r.m_EneryConsumpParamConfig_r;
+        //        this->m_EnergyConsumpSensorConfi_r = f__r.m_EnergyConsumpSensorConfi_r;
+        //        this->m_EnergyConsumpSensor_r = f__r.m_EnergyConsumpSensor_r;
+        //        this->m_TimeStamp_r = f__r.m_TimeStamp_r;
+        //    }
+        //}
+
+        void fUpdateEnergyConsumptionLogic();
+
+    private:
+        const CEnergyConsumptionParamConfig&    m_EneryConsumpParamConfig_r  ;
+        const CEnergyConsumptionSensorConfig&   m_EnergyConsumpSensorConfi_r ;
+        const CEnergyConsumptionSensorComm&     m_EnergyConsumpSensor_r      ;
+        TimeStamp& m_TimeStamp_r;
+        CEnergyConsump2SysInfo& m_EnergyConst2SysInfo_r;
+        
+        DailyDateTime       m_StartTimeStampOfTooHighenergy;
+        //const CCommTypeConfig& m_CommTypeConfig_r;
+    };
 }//end of namespace
 
 #endif
