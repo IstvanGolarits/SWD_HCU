@@ -12,5 +12,8 @@
 
 namespace istvan_richard
 {
+    void CEnergyConsumptionLogic::fUpdateEnergyConsumptionLogic()
+    {
 
+    }
 }//end of namespace

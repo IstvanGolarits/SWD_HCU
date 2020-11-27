@@ -29,6 +29,7 @@ namespace istvan_richard
         EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::ALL_OK);
     }
 
+    /// Testing ID_22
     TEST(MotionBusinnessTest, TestingValidMotionValidTime)
     {
         //ARRANGE
@@ -40,25 +41,29 @@ namespace istvan_richard
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
-        EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::WARNING_IN_TIME);
+        EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::ALL_OK);
     }
 
-    TEST(MotionBusinnessTest, TestingInValidMotionValidTime)
+    /// Testing ID_21
+    TEST(MotionBusinnessTest, TestingNoValidMotionValidTime)
     {
         /// Motion Confidentality is too low to accept. State shall be in ALL_OK
 
         //ARRANGE
-        CMotionCommInfo         l_MotionCommInfo(10.F, 5, true);
+        CMotionCommInfo         l_MotionCommInfo(10.F, 5, false);
         CMotionDetectionParam   l_MotionParam;
         TimeStamp               l_currentTime;
+        DailyDateTime           l_dailyCurrentTime(std::string("MONDAY"), 12, 0, 0);
+        l_currentTime.fUpdateCurrentTime(l_dailyCurrentTime);
         CMotion2SysInfo         l_motionToSysInfo;
         CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
-        EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::ALL_OK);
+        EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::WARNING_IN_TIME);
     }
 
+    ///Testing ID_23
     TEST(MotionBusinnessTest, TestingValidMotionInValidTime)
     {
         //ARRANGE
@@ -75,6 +80,7 @@ namespace istvan_richard
         EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::WARNING_OUT_OF_TIME);
     }
 
+    /// Testing ID_24
     TEST(MotionBusinnessTest, TestingInValidMotionInValidTime)
     {
         //ARRANGE

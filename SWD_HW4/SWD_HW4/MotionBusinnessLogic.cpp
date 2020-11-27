@@ -5,7 +5,7 @@
 /// Author: @Richard Csaba Hafenscher
 /// Author: @Istvan Golarits
 /// --------------------------------------------------------
-/// Purpose of file: 
+/// Purpose of file: Deciding if a warning shall be requested based on sensor input, time, and user-defined setups
 /// --------------------------------------------------------
 
 #include "MotionBusinnessLogic.hpp"
@@ -55,26 +55,6 @@ namespace istvan_richard
             {
                 //There is no intruder in grannys house.
                 m_MotionToSysInfo_r.fUpdateState(CMotion2SysInfo::E_StateOfMotionBussiness::ALL_OK);
-            }
-        }
-    }
-
-    void CMotionBusinnessLogic::fCheckForMotion()
-    {
-        if (m_motionCommInfo_r.fGetMovementDetected())
-        {
-            if (!m_WasAlreadyMoveDetect_b)
-            {
-                m_WasAlreadyMoveDetect_b = true;
-                m_StartOfMovement = m_TimeStamp_r.fGetCurrentTime();
-            }
-        }
-        else
-        {
-            if (m_WasAlreadyMoveDetect_b)
-            {
-                m_StartOfMovement = { std::string(" "), 0, 0, 0 };
-                m_WasAlreadyMoveDetect_b = false;
             }
         }
     }
