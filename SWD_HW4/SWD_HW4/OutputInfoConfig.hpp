@@ -23,9 +23,14 @@ namespace istvan_richard
     class COutputInfoConfig
     {
     public:
-        enum class E_ComType
+        enum class E_ComType : unsigned short int
         {
-
+			ComTypeBluetooth =0,
+			ComTypeBLE =1,
+			ComTypeZigbee =2,
+			ComTypeAnt = 3,
+			ComTypeAntPlus = 4,
+			ComTypeUHF =5
         };
 
         struct Contact
