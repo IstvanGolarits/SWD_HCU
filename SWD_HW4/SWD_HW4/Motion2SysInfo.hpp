@@ -16,9 +16,26 @@ namespace istvan_richard
     class CMotion2SysInfo
     {
     public:
-
+        enum class E_StateOfMotionBussiness
+        {
+            OFF =0,
+            ALL_OK,
+            SUS,
+            WARNING_IN_TIME,
+            WARNING_OUT_OG_TIME,
+            ERROR
+        };
+        //C'Tor
+        CMotion2SysInfo():
+            m_StateOfMotion_e(E_StateOfMotionBussiness::ALL_OK)
+        {}
+        //Param C'Tor
+        CMotion2SysInfo(const E_StateOfMotionBussiness& f_state_r):
+            m_StateOfMotion_e(f_state_r)
+        {}
+        const E_StateOfMotionBussiness fGetMotionState() const;
     private:
-
+        E_StateOfMotionBussiness m_StateOfMotion_e;
     };
 
 } //end of namespace

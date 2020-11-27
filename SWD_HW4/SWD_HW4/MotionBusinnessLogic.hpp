@@ -19,16 +19,19 @@ namespace istvan_richard
     class CMotionBusinnessLogic
     {
     public:
-        CMotionBusinnessLogic(CMotionCommInfo &f_motionCommInfo_r, CMotionDetectionParam &f_motionDetectParam_r):
+        CMotionBusinnessLogic(const CMotionCommInfo &f_motionCommInfo_r, const CMotionDetectionParam &f_motionDetectParam_r,
+            const TimeStamp& f_timeStamp_r):
             m_motionCommInfo_r(f_motionCommInfo_r),
-            m_motionDetectParam_r(f_motionDetectParam_r)
+            m_motionDetectParam_r(f_motionDetectParam_r),
+            m_TimeStamp_r(f_timeStamp_r)
         {}
 
         void fUpdateMotionLogic();
-
+        void fUpdateMotion2SysInfo();
     private:
-        CMotionCommInfo& m_motionCommInfo_r;
-        CMotionDetectionParam& m_motionDetectParam_r;
+        const CMotionCommInfo& m_motionCommInfo_r;
+        const CMotionDetectionParam& m_motionDetectParam_r;
+        const TimeStamp& m_TimeStamp_r;
 
     };
 

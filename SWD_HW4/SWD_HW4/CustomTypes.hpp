@@ -8,14 +8,87 @@
 /// Purpose of file: Contains all custom made types
 /// --------------------------------------------------------
 
-#ifndef MOTION_DETECTION_PARAM_HPP
-#define MOTION_DETECTION_PARAM_HPP#pragma once
+#ifndef UTILS_HPP
+#define UTILS_HPP
 
 #include <string>
 #include <vector>
 
 namespace istvan_richard
 {
+    class DailyDateTime
+    {
+    public:
+        //Default C'Tor
+        DailyDateTime() :
+            m_Day_s(" "),
+            m_NumOfDay_i32(0),
+            m_Hour_i32(0),
+            m_Minutes_i32(0),
+            m_Seconds_i32(0)
+        {}
+        //Setter, param C'Tor
+        DailyDateTime(std::string f_day_s, int f_hour_i32, int f_minutes_i32, int f_seconds_i32) :
+            m_Day_s(f_day_s),
+            m_NumOfDay_i32(0),
+            m_Hour_i32(f_hour_i32),
+            m_Minutes_i32(f_minutes_i32),
+            m_Seconds_i32(f_seconds_i32)
+        {
+            if ("MONDAY" == m_Day_s)
+            {
+                m_NumOfDay_i32 = 1;
+            }
+            else if ("TUESDAY" == m_Day_s)
+            {
+                m_NumOfDay_i32 = 2;
+            }
+            else if ("WEDNESDAY" == m_Day_s)
+            {
+                m_NumOfDay_i32 = 3;
+            }
+            else if ("THURSDAY" == m_Day_s)
+            {
+                m_NumOfDay_i32 = 4;
+            }
+            else if ("FRYDAY" == m_Day_s)
+            {
+                m_NumOfDay_i32 = 5;
+            }
+            else if ("SATURDAY" == m_Day_s)
+            {
+                m_NumOfDay_i32 = 6;
+            }
+            else if ("SUNDAY" == m_Day_s)
+            {
+                m_NumOfDay_i32 = 7;
+            }
+            else
+            {
+                m_NumOfDay_i32 = 0;
+                std::printf("Error Occured, Wrong Name for Day");
+            }
+        }
+        //Copy C'tor
+        DailyDateTime(const DailyDateTime& f__r)
+        {
+            if (this != &f__r)
+            {
+                this->m_Day_s = f__r.m_Day_s;
+                this->m_Hour_i32 = f__r.m_Hour_i32;
+                this->m_Minutes_i32 = f__r.m_Minutes_i32;
+                this->m_Seconds_i32 = f__r.m_Seconds_i32;
+                this->m_NumOfDay_i32 = f__r.m_NumOfDay_i32;
+            }
+        }
+    private:
+        std::string m_Day_s;
+        int m_NumOfDay_i32;
+        int m_Hour_i32;
+        int m_Minutes_i32;
+        int m_Seconds_i32;
+    };
+
     class DateTime
     {
     public:
@@ -86,7 +159,7 @@ namespace istvan_richard
             m_Days_adt.push_back(f_DateTime_r7);
         }
         //Copy C'Tor
-        DateTime(DateTime& f__r)
+        DateTime(const DateTime& f__r)
         {
             if (this != &f__r)
             {
@@ -94,7 +167,6 @@ namespace istvan_richard
                 {
                     DailyDateTime l_currentDate = **l_it_p;
                     this->m_Days_adt.push_back(l_currentDate);
-
                 }
             }
         }
@@ -102,78 +174,23 @@ namespace istvan_richard
         std::vector<DailyDateTime> m_Days_adt;
     };
 
-    class DailyDateTime
+    class TimeStamp
     {
     public:
-        //Default C'Tor
-        DailyDateTime() :
-            m_Day_s(" "),
-            m_NumOfDay_i32(0),
-            m_Hour_i32(0),
-            m_Minutes_i32(0),
-            m_Seconds_i32(0)
-        {}
-        //Setter, param C'Tor
-        DailyDateTime(std::string& f_day_s, int& f_hour_i32, int& f_minutes_i32, int& f_seconds_i32) :
-            m_Day_s(f_day_s),
-            m_NumOfDay_i32(0),
-            m_Hour_i32(f_hour_i32),
-            m_Minutes_i32(f_minutes_i32),
-            m_Seconds_i32(f_seconds_i32)
-        { 
-            if ("MONDAY" == m_Day_s)
-            {
-                m_NumOfDay_i32 = 1;
-            }
-            else if ("TUESDAY" == m_Day_s)
-            {
-                m_NumOfDay_i32 = 2;
-            }
-            else if ("WEDNESDAY" == m_Day_s)
-            {
-                m_NumOfDay_i32 = 3;
-            }
-            else if ("THURSDAY" == m_Day_s)
-            {
-                m_NumOfDay_i32 = 4;
-            }
-            else if ("FRYDAY" == m_Day_s)
-            {
-                m_NumOfDay_i32 = 5;
-            }
-            else if ("SATURDAY" == m_Day_s)
-            {
-                m_NumOfDay_i32 = 6;
-            }
-            else if ("SUNDAY" == m_Day_s)
-            {
-                m_NumOfDay_i32 = 7;
-            }
-            else
-            {
-                m_NumOfDay_i32 = 0;
-                std::printf("Error Occured, Wrong Name for Day");
-            }
-        }
-        //Copy C'tor
-        DailyDateTime(DailyDateTime& f__r)
-        {
-            if (this != &f__r)
-            {
-                this->m_Day_s = f__r.m_Day_s;
-                this->m_Hour_i32 = f__r.m_Hour_i32;
-                this->m_Minutes_i32 = f__r.m_Minutes_i32;
-                this->m_Seconds_i32 = f__r.m_Seconds_i32;
-                this->m_NumOfDay_i32 = f__r.m_NumOfDay_i32;
-            }
-        }
+        //C'Tor
+       TimeStamp():
+           m_CurrentTime(std::string("MONDAY"), 12, 0, 0)
+       {}
+       void fUpdateCurrentTime(const DailyDateTime& f_CurrTimeInfo_r)
+       {
+           m_CurrentTime = f_CurrTimeInfo_r;
+       }
+       void fGetCurrentTime();
     private:
-        std::string m_Day_s;
-        int m_NumOfDay_i32;
-        int m_Hour_i32;
-        int m_Minutes_i32;
-        int m_Seconds_i32;
+        DailyDateTime m_CurrentTime;
+
     };
+    
 }//end of namespace
 
 #endif
