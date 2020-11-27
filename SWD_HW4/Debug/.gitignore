@@ -8,3 +8,4 @@
 *.exe
 *.pdb
 *.ilk
+/SWD_HW4.lib
