@@ -81,6 +81,27 @@ namespace istvan_richard
                 this->m_NumOfDay_i32 = f__r.m_NumOfDay_i32;
             }
         }
+
+        const std::string fGetDay() const
+        {
+            return this->m_Day_s;
+        }
+        const int fGetNumOfDay() const
+        {
+            return this->m_NumOfDay_i32;
+        }
+        const int fGetHour() const
+        {
+            return this->m_Hour_i32;
+        }
+        const int fGetMinute() const
+        {
+            return this->m_Minutes_i32;
+        }
+        const int fGetSec() const
+        {
+            return this->m_Seconds_i32;
+        }
     private:
         std::string m_Day_s;
         int m_NumOfDay_i32;
@@ -170,6 +191,10 @@ namespace istvan_richard
                 }
             }
         }
+        const std::vector<DailyDateTime> fGetDaysVector() const
+        {
+            return m_Days_adt;
+        }
     private:
         std::vector<DailyDateTime> m_Days_adt;
     };
@@ -185,7 +210,10 @@ namespace istvan_richard
        {
            m_CurrentTime = f_CurrTimeInfo_r;
        }
-       void fGetCurrentTime();
+       DailyDateTime fGetCurrentTime()
+       {
+           return m_CurrentTime;
+       }
     private:
         DailyDateTime m_CurrentTime;
 

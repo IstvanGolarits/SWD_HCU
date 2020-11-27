@@ -42,9 +42,18 @@ namespace istvan_richard
             m_MovementDetected_b(f_movedetct_r)
         {}
 
-        const float fGetMovementSize() const;
-        const int fGetConfidenceInMovement() const;
-        const bool fGetMovementDetected() const;
+        const float fGetMovementSize() const
+        {
+            return m_MovementSize_f64;
+        }
+        const int fGetConfidenceInMovement() const
+        {
+            return m_ConfidenceInMovement_i32;
+        }
+        const bool fGetMovementDetected() const
+        {
+            return m_MovementDetected_b;
+        }
 
     private:
         float m_MovementSize_f64;

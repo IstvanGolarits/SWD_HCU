@@ -66,13 +66,34 @@ namespace istvan_richard
         {}
 
 
-        const int  fGetSamplingRate() const;
-        const int  fGetOutOfNormalTimeWarningThreshold() const;
-        const int fGetNormalTimeWarningThreshold() const;
-        const int fGetNoResponseTimeThreshold() const;
-        const int fGetNumberOfRetry() const;
-        const DateTime fGetStartOfMonitoring() const;
-        const DateTime fGetEndOfMonitoring() const;
+        const int  fGetSamplingRate() const
+        {
+            return m_SamplingRate_i32;
+        }
+        const int  fGetOutOfNormalTimeWarningThreshold() const
+        {
+            return m_OutOfNormalTimeWarningThreshold_i32;
+        }
+        const int fGetNormalTimeWarningThreshold() const
+        {
+            return m_NormalTimeWarningThreshold_i32;
+        }
+        const int fGetNoResponseTimeThreshold() const
+        {
+            return m_NoResponseTimeThreshold_i32;
+        }
+        const int fGetNumberOfRetry() const
+        {
+            return m_NumberOfRetry_i32;
+        }
+        const DateTime fGetStartOfMonitoring() const
+        {
+            return m_StartOfMonitoring_dt;
+        }
+        const DateTime fGetEndOfMonitoring() const
+        {
+            return m_EndOfMonitoring_dt;
+        }
 
     private:
         DateTime m_StartOfMonitoring_dt;

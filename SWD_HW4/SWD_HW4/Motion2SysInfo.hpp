@@ -33,7 +33,14 @@ namespace istvan_richard
         CMotion2SysInfo(const E_StateOfMotionBussiness& f_state_r):
             m_StateOfMotion_e(f_state_r)
         {}
-        const E_StateOfMotionBussiness fGetMotionState() const;
+        const E_StateOfMotionBussiness fGetMotionState() const
+        {
+            return this->m_StateOfMotion_e;
+        }
+        void fUpdateState(E_StateOfMotionBussiness f_newState_e)
+        {
+            m_StateOfMotion_e = f_newState_e;
+        }
     private:
         E_StateOfMotionBussiness m_StateOfMotion_e;
     };

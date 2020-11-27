@@ -21,8 +21,8 @@ namespace istvan_richard
         CMotionCommInfo         l_MotionCommInfo;
         CMotionDetectionParam   l_MotionParam;
         TimeStamp               l_currentTime;
-        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime);
         CMotion2SysInfo         l_motionToSysInfo;
+        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
@@ -35,8 +35,8 @@ namespace istvan_richard
         CMotionCommInfo         l_MotionCommInfo(10.F, 100, true);
         CMotionDetectionParam   l_MotionParam;
         TimeStamp               l_currentTime;
-        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime);
         CMotion2SysInfo         l_motionToSysInfo;
+        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
@@ -51,8 +51,8 @@ namespace istvan_richard
         CMotionCommInfo         l_MotionCommInfo(10.F, 5, true);
         CMotionDetectionParam   l_MotionParam;
         TimeStamp               l_currentTime;
-        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime);
         CMotion2SysInfo         l_motionToSysInfo;
+        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
@@ -67,8 +67,8 @@ namespace istvan_richard
         TimeStamp               l_currentTime;
         DailyDateTime           l_dailyTime(std::string("MONDAY"), 5, 0, 0);
         l_currentTime.fUpdateCurrentTime(l_dailyTime);
-        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime);
         CMotion2SysInfo         l_motionToSysInfo;
+        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
@@ -83,8 +83,8 @@ namespace istvan_richard
         TimeStamp               l_currentTime;
         DailyDateTime           l_dailyTime(std::string("MONDAY"), 5, 0, 0);
         l_currentTime.fUpdateCurrentTime(l_dailyTime);
-        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime);
         CMotion2SysInfo         l_motionToSysInfo;
+        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
@@ -99,8 +99,8 @@ namespace istvan_richard
         TimeStamp               l_currentTime;
         DailyDateTime           l_dailyTime(std::string("MONDAY"), 16, 0, 0);
         l_currentTime.fUpdateCurrentTime(l_dailyTime);
-        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime);
         CMotion2SysInfo         l_motionToSysInfo;
+        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
@@ -114,8 +114,8 @@ namespace istvan_richard
         TimeStamp               l_currentTime;
         DailyDateTime           l_dailyTime(std::string("MONDAY"), 5, 0, 0);
         l_currentTime.fUpdateCurrentTime(l_dailyTime);
-        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime);
         CMotion2SysInfo         l_motionToSysInfo;
+        CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT

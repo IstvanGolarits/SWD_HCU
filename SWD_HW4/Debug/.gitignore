@@ -5,3 +5,6 @@
 /SWD_HW4_TEST.exe.gta.testdurations
 /SWD_HW4_TEST.ilk
 /SWD_HW4_TEST.pdb
+*.exe
+*.pdb
+*.ilk
