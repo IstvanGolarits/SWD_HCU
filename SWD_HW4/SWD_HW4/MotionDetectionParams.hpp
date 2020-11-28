@@ -23,8 +23,8 @@ namespace istvan_richard
     public:
 
         CMotionDetectionParam() :
-            m_StartOfMonitoring_dt               (DailyDateTime(std::string(" "), 7, 0, 0)),
-            m_EndOfMonitoring_dt                 (DailyDateTime(std::string(" "), 21, 0, 0)),
+            m_StartOfMonitoring_dt               (DailyDateTime(std::string("ALL"), 7, 0, 0)),
+            m_EndOfMonitoring_dt                 (DailyDateTime(std::string("ALL"), 21, 0, 0)),
             m_SamplingRate_i32                   (1),
             m_OutOfNormalTimeWarningThreshold_i32(10),
             m_NormalTimeWarningThreshold_i32    (10),

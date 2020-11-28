@@ -24,9 +24,9 @@ namespace istvan_richard
     {
     public:
         CEnergyConsumptionLogic(
-            const CEnergyConsumptionParamConfig& f_EneryConsumpParamConfig_r,
-            const CEnergyConsumptionSensorConfig& f_EnergyConsumpSensorConfi_r,
-            const CEnergyConsumptionSensorComm& f_EnergyConsumpSensor_r,
+            CEnergyConsumptionParamConfig& f_EneryConsumpParamConfig_r,
+            CEnergyConsumptionSensorConfig& f_EnergyConsumpSensorConfi_r,
+            CEnergyConsumptionSensorComm& f_EnergyConsumpSensor_r,
             TimeStamp& f_TimeStamp_r,
             CEnergyConsump2SysInfo& f_Energy2sysInfo_r):
             m_EneryConsumpParamConfig_r(f_EneryConsumpParamConfig_r),
@@ -34,18 +34,23 @@ namespace istvan_richard
             m_EnergyConsumpSensor_r(f_EnergyConsumpSensor_r),
             m_TimeStamp_r(f_TimeStamp_r),
             m_EnergyConst2SysInfo_r(f_Energy2sysInfo_r),
+            m_WasThereTooHighEnergy_b(false),
             m_StartTimeStampOfTooHighenergy(std::string(" "), 0, 0, 0)
         {}
 
         void fUpdateEnergyConsumptionLogic();
 
     private:
-        const CEnergyConsumptionParamConfig&    m_EneryConsumpParamConfig_r  ;
-        const CEnergyConsumptionSensorConfig&   m_EnergyConsumpSensorConfi_r ;
-        const CEnergyConsumptionSensorComm&     m_EnergyConsumpSensor_r      ;
+        void fCheckTooHighEnergy();
+        bool fIsInTimeFrame();
+
+        CEnergyConsumptionParamConfig&    m_EneryConsumpParamConfig_r  ;
+        CEnergyConsumptionSensorConfig&   m_EnergyConsumpSensorConfi_r ;
+        CEnergyConsumptionSensorComm&     m_EnergyConsumpSensor_r      ;
         TimeStamp& m_TimeStamp_r;
         CEnergyConsump2SysInfo& m_EnergyConst2SysInfo_r;
         
+        bool m_WasThereTooHighEnergy_b;
         DailyDateTime       m_StartTimeStampOfTooHighenergy;
         //const CCommTypeConfig& m_CommTypeConfig_r;
     };

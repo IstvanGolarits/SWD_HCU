@@ -13,6 +13,7 @@
 
 #include <string>
 #include <vector>
+#include <math.h>
 
 namespace istvan_richard
 {
@@ -63,14 +64,23 @@ namespace istvan_richard
             {
                 m_NumOfDay_i32 = 7;
             }
+            else if ("ALL" == m_Day_s)
+            {
+                m_NumOfDay_i32 = 10;
+            }
             else
             {
                 m_NumOfDay_i32 = 0;
-                std::printf("Error Occured, Wrong Name for Day");
+                std::printf("Error Occured, Wrong Name for Day\n");
             }
         }
         //Copy C'tor
-        DailyDateTime(const DailyDateTime& f__r)
+        DailyDateTime(const DailyDateTime& f__r):
+            m_Day_s(" "),
+            m_NumOfDay_i32(0),
+            m_Hour_i32(0),
+            m_Minutes_i32(0),
+            m_Seconds_i32(0)
         {
             if (this != &f__r)
             {
@@ -80,6 +90,119 @@ namespace istvan_richard
                 this->m_Seconds_i32 = f__r.m_Seconds_i32;
                 this->m_NumOfDay_i32 = f__r.m_NumOfDay_i32;
             }
+        }
+
+        /// Take care, this function disregards potential differnces in days!! Only valid for same-day compare!
+        bool operator < (const DailyDateTime& f_refTime)
+        {
+            if (this->fGetHour() < f_refTime.fGetHour())
+            {
+                //hour is lower than ref, definetly earlier time. If hours are equal, then check minutes
+                return true;
+            }
+            else if (this->fGetHour() == f_refTime.fGetHour())
+            {
+                if (this->fGetMinute() < f_refTime.fGetMinute())
+                {
+                    //Same hour, lower minute, thus earlier point in time
+                    return true;
+                }
+                else if (this->fGetMinute() == f_refTime.fGetMinute())
+                {
+                    //same hour, same minute
+                    if (this->fGetSec() < f_refTime.fGetSec())
+                    {
+                        //Same hour, same minute, lower sec thus earlier point in time
+                        return true;
+                    }
+                }
+            }
+            //Not returned anywhere above. Thus time is equal or lower.
+            return false;
+        }
+
+        bool operator <= (const DailyDateTime& f_refTime)
+        {
+            if (this->fGetHour() < f_refTime.fGetHour())
+            {
+                //hour is lower than ref, definetly earlier time. If hours are equal, then check minutes
+                return true;
+            }
+            else if (this->fGetHour() == f_refTime.fGetHour())
+            {
+                if (this->fGetMinute() < f_refTime.fGetMinute())
+                {
+                    //Same hour, lower minute, thus earlier point in time
+                    return true;
+                }
+                else if (this->fGetMinute() == f_refTime.fGetMinute())
+                {
+                    //same hour, same minute
+                    if (this->fGetSec() <= f_refTime.fGetSec())
+                    {
+                        //Same hour, same minute, lower sec thus earlier point in time
+                        return true;
+                    }
+                }
+            }
+            //Not returned anywhere above. Thus time is equal or lower.
+            return false;
+        }
+
+        bool operator >= (const DailyDateTime& f_refTime)
+        {
+            if (this->fGetHour() > f_refTime.fGetHour())
+            {
+                //hour is higher than ref, definetly later time. If hours are equal, then check minutes
+                return true;
+            }
+            else if (this->fGetHour() == f_refTime.fGetHour())
+            {
+                if (this->fGetMinute() > f_refTime.fGetMinute())
+                {
+                    //Same hour, higher minute, thus later point in time
+                    return true;
+                }
+                else if (this->fGetMinute() == f_refTime.fGetMinute())
+                {
+                    //same hour, same minute
+                    if (this->fGetSec() >= f_refTime.fGetSec())
+                    {
+                        //Same hour, same minute, higher sec thus later point in time
+                        return true;
+                    }
+                }
+            }
+            //Not returned anywhere above. Thus time is equal or lower.
+            return false;
+        }
+
+        bool operator > (const DailyDateTime& f_refTime)
+        {
+            if (this->fGetHour() > f_refTime.fGetHour())
+            {
+                //hour is higher than ref, definetly later time. If hours are equal, then check minutes
+                return true;
+            }
+            else if (this->fGetHour() == f_refTime.fGetHour())
+            {
+                if (this->fGetMinute() > f_refTime.fGetMinute())
+                {
+                    //Same hour, higher minute, thus later point in time
+                    return true;
+                }
+                else if (this->fGetMinute() == f_refTime.fGetMinute())
+                {
+                    //same hour, same minute
+                    if (this->fGetSec() > f_refTime.fGetSec())
+                    {
+                        //Same hour, same minute, higher sec thus later point in time
+                        return true;
+                    }
+                }
+            }
+            //Not returned anywhere above. Thus time is equal or lower.
+            return false;
         }
 
         const std::string fGetDay() const
@@ -201,25 +324,33 @@ namespace istvan_richard
             m_Days_adt.push_back(f_DateTime_r7);
         }
         //Copy C'Tor
-        DateTime(const DateTime& f__r)
+        DateTime(const DateTime& f__r):
+            m_Days_adt()
         {
             if (this != &f__r)
             {
-                for (auto l_it_p = &f__r.m_Days_adt.begin(); l_it_p!= &f__r.m_Days_adt.end(); ++l_it_p)
-                {
-                    DailyDateTime l_currentDate = **l_it_p;
-                    this->m_Days_adt.push_back(l_currentDate);
-                }
+                this->m_Days_adt = f__r.m_Days_adt;
             }
         }
-        const std::vector<DailyDateTime> fGetDaysVector() const
+
+        std::vector<DailyDateTime>::iterator fGetDaysVectorBeginning()
         {
-            return m_Days_adt;
+            return m_Days_adt.begin();
+        }
+
+        std::vector<DailyDateTime>::iterator fGetDaysVectorEnd()
+        {
+            return m_Days_adt.end();
+        }
+
+        std::vector<DailyDateTime> fGetDaysVector()
+        {
+            return this->m_Days_adt;
         }
 
         DailyDateTime fGetCurrentDaySetup(TimeStamp& f_TimeStamp_r)
         {
-            const std::string l_currentDay_s = f_TimeStamp_r.fGetCurrentTime().fGetDay();
+            std::string l_currentDay_s = f_TimeStamp_r.fGetCurrentTime().fGetDay();
             for (auto l_it_p = this->m_Days_adt.begin();
                 l_it_p != this->m_Days_adt.end();
                 l_it_p++)
@@ -252,6 +383,17 @@ namespace istvan_richard
             l_ret_i32 += 60 * 60 * (l_currentTime.fGetCurrentTime().fGetHour() - l_refDay.fGetHour());
             l_ret_i32 += 60 * (l_currentTime.fGetCurrentTime().fGetMinute() - l_refDay.fGetMinute() );
             l_ret_i32 += (l_currentTime.fGetCurrentTime().fGetSec() - l_refDay.fGetSec());
+            return l_ret_i32;
+        }
+
+        int fGetTimeDiffSinceRefInSec(const DailyDateTime f_refStamp, const TimeStamp f_currentTime)
+        {
+            auto l_currTime(f_currentTime);
+            auto l_refStamp(f_refStamp);
+            int l_ret_i32(0);
+            l_ret_i32 += 60 * 60 * abs(l_currTime.fGetCurrentTime().fGetHour() - l_refStamp.fGetHour());
+            l_ret_i32 += 60 * abs(l_currTime.fGetCurrentTime().fGetMinute() - l_refStamp.fGetMinute());
+            l_ret_i32 += abs(l_currTime.fGetCurrentTime().fGetSec() - l_refStamp.fGetSec());
             return l_ret_i32;
         }
 

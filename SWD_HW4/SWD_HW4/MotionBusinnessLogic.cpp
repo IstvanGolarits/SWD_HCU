@@ -61,56 +61,30 @@ namespace istvan_richard
 
     bool CMotionBusinnessLogic::fIsBeforeStartTime(const float& f_thresholdValue_r)
     {
-        for (auto l_it_p = m_motionDetectParam_r.fGetEndOfMonitoring().fGetDaysVector().begin();
-            l_it_p != m_motionDetectParam_r.fGetEndOfMonitoring().fGetDaysVector().end();
-            l_it_p++)
+        auto l_startTimeForDay(m_motionDetectParam_r.fGetStartOfMonitoring().fGetCurrentDaySetup(m_TimeStamp_r));
+        DailyDateTime l_thresholdCompensatedCurrentTime
+        (m_TimeStamp_r.fGetCurrentTime().fGetDay(), 
+            m_TimeStamp_r.fGetCurrentTime().fGetHour(), 
+            m_TimeStamp_r.fGetCurrentTime().fGetMinute()+f_thresholdValue_r,
+            m_TimeStamp_r.fGetCurrentTime().fGetSec());
+        if (l_startTimeForDay >= l_thresholdCompensatedCurrentTime)
         {
-            if (l_it_p->fGetDay() == std::string("ALL")
-                || l_it_p->fGetDay() == m_TimeStamp_r.fGetCurrentTime().fGetDay())
-            {
-                if (l_it_p->fGetHour() >= m_TimeStamp_r.fGetCurrentTime().fGetHour()
-                    && l_it_p->fGetMinute() >= (m_TimeStamp_r.fGetCurrentTime().fGetMinute() + f_thresholdValue_r)
-                    && l_it_p->fGetSec() >= m_TimeStamp_r.fGetCurrentTime().fGetSec())
-                {
-                    return true;
-                }
-                else
-                {
-                    //
-                }
-            }
-            else
-            {
-                //
-            }
+            return true;
         }
         return false;
     }
 
     bool CMotionBusinnessLogic::fIsAfterEndTime(const float& f_thresholdValue_r)
     {
-        for (auto l_it_p = m_motionDetectParam_r.fGetEndOfMonitoring().fGetDaysVector().begin();
-            l_it_p != m_motionDetectParam_r.fGetEndOfMonitoring().fGetDaysVector().end();
-            l_it_p++)
+        auto l_endTimeForDay(m_motionDetectParam_r.fGetEndOfMonitoring().fGetCurrentDaySetup(m_TimeStamp_r));
+        DailyDateTime l_thresholdCompensatedCurrentTime
+        (m_TimeStamp_r.fGetCurrentTime().fGetDay(),
+            m_TimeStamp_r.fGetCurrentTime().fGetHour(),
+            m_TimeStamp_r.fGetCurrentTime().fGetMinute() + f_thresholdValue_r,
+            m_TimeStamp_r.fGetCurrentTime().fGetSec());
+        if (l_endTimeForDay <= l_thresholdCompensatedCurrentTime)
         {
-            if (l_it_p->fGetDay() == std::string("ALL")
-                || l_it_p->fGetDay() == m_TimeStamp_r.fGetCurrentTime().fGetDay())
-            {
-                if (l_it_p->fGetHour() <= m_TimeStamp_r.fGetCurrentTime().fGetHour()
-                    && l_it_p->fGetMinute() <= (m_TimeStamp_r.fGetCurrentTime().fGetMinute() - f_thresholdValue_r)
-                    && l_it_p->fGetSec() <= m_TimeStamp_r.fGetCurrentTime().fGetSec())
-                {
-                    return true;
-                }
-                else
-                {
-                    //
-                }
-            }
-            else
-            {
-                //
-            }
+            return true;
         }
         return false;
     }
