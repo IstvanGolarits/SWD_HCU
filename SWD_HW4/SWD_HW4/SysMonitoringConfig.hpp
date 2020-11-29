@@ -40,6 +40,22 @@ namespace istvan_richard
             m_EnergyConsumpInteractFeatureSwitch_b(false)
         {};
 
+        CSysMonitoringConfig(
+            int&    f_ref1_r,
+            int&    f_ref2_r,
+            bool&    f_ref3_r,
+            bool&    f_ref4_r,
+            bool&    f_ref5_r,
+            bool&    f_ref6_r
+        ) :
+            m_NotificationFrequency_i32(f_ref1_r),
+            m_AcknowledgementTimeThreshold_i32(f_ref2_r),
+            m_NotificationStatus_b(f_ref3_r),
+            m_MonitoringOnOff_b(f_ref4_r),
+            m_EnergyConsumpRiskDetectFailSwitch_b(f_ref5_r),
+            m_EnergyConsumpInteractFeatureSwitch_b(f_ref6_r)
+        {}
+
         const int  fGetNotificationFrequency() const;
         const int  fGetAcknowledgementTimeThreshold() const;
         const bool fGetNotificationStatus_b() const;
