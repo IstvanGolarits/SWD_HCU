@@ -18,7 +18,7 @@ namespace istvan_richard
         {
             if (fIsInValidTime(m_motionDetectParam_r.fGetNormalTimeWarningThreshold()))
             {
-                if (m_motionCommInfo_r.fGetConfidenceInMovement() >= DEFAULT_CONFIDENCE_IN_MOVEMENT_NEEDED && m_motionCommInfo_r.fGetMovementSize() >= DEFAULT_MOVEMENT_SIZE_NEEDED)
+                if (m_motionCommInfo_r.fGetConfidenceInMovement() >= 80 && m_motionCommInfo_r.fGetMovementSize() >= 0.6)
                 {
                     //Movement in time-frame ->> Granny alive!
                     m_MotionToSysInfo_r.fUpdateState(CMotion2SysInfo::E_StateOfMotionBussiness::ALL_OK);
@@ -31,7 +31,7 @@ namespace istvan_richard
             }
             else
             {
-                if (m_motionCommInfo_r.fGetConfidenceInMovement() >= DEFAULT_CONFIDENCE_IN_MOVEMENT_NEEDED && m_motionCommInfo_r.fGetMovementSize() >= DEFAULT_MOVEMENT_SIZE_NEEDED)
+                if (m_motionCommInfo_r.fGetConfidenceInMovement() >= 80 && m_motionCommInfo_r.fGetMovementSize() >= 0.6)
                 {
                     //THERE IS AN INTRUDER!!!
                     m_MotionToSysInfo_r.fUpdateState(CMotion2SysInfo::E_StateOfMotionBussiness::WARNING_OUT_OF_TIME);

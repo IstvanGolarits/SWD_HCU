@@ -11,10 +11,6 @@
 #ifndef MOTION_COMM_INFO_HPP
 #define MOTION_COMM_INFO_HPP
 
-#define DEFAULT_MOTION_MOVEMENT_SIZE 0
-#define DEFAULT_MOTION_CONFIDENCE 0
-#define DEFAULT_DETECTED_STATE 0!=0
-
 namespace istvan_richard
 {
     class CMotionCommInfo
@@ -22,15 +18,15 @@ namespace istvan_richard
     public:
         //C'Tor'
         CMotionCommInfo() :
-            m_MovementSize_f64(DEFAULT_MOTION_MOVEMENT_SIZE),
-            m_ConfidenceInMovement_i32(DEFAULT_MOTION_CONFIDENCE),
-            m_MovementDetected_b(DEFAULT_DETECTED_STATE)
+            m_MovementSize_f64(0),
+            m_ConfidenceInMovement_i32(0),
+            m_MovementDetected_b(false)
         {}
         //Copy C'Tor
         CMotionCommInfo(const CMotionCommInfo& f__r):
             m_MovementSize_f64(0),
             m_ConfidenceInMovement_i32(0),
-            m_MovementDetected_b(DEFAULT_DETECTED_STATE)
+            m_MovementDetected_b(false)
         {
             if (this != &f__r)
             {

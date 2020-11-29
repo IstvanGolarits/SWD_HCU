@@ -11,9 +11,6 @@
 #ifndef MOTION_BUSINNESS_LOGIC_HPP
 #define MOTION_BUSINNESS_LOGIC_HPP
 
-#define DEFAULT_CONFIDENCE_IN_MOVEMENT_NEEDED  80
-#define DEFAULT_MOVEMENT_SIZE_NEEDED 0.6f
-
 #include "MotionCommInfo.hpp"
 #include "MotionDetectionParams.hpp"
 #include "Motion2SysInfo.hpp"

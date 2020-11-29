@@ -10,8 +10,6 @@
 
 #ifndef ENERGY_CONSUMPTION_PARAM_CONFIG_HPP
 #define ENERGY_CONSUMPTION_PARAM_CONFIG_HPP
-#define DEAFULT_ENERGY_CONSUMPTION_POWER_THRESHOLD 3800
-#define DEAFULT_ENERGY_CONSUMPTION_TIME_SPAWN 100
 
 #include <stdlib.h>
 #include <string>
@@ -25,8 +23,8 @@ namespace istvan_richard
         CEnergyConsumptionParamConfig() :
             m_UnitOfThreshold_s("Watts"),
             m_UnitOfTimeSpawn_s("Sec"),
-            m_TimeSpawn_f64(DEAFULT_ENERGY_CONSUMPTION_TIME_SPAWN),
-            m_ConsumedPowerThreshold_f64(DEAFULT_ENERGY_CONSUMPTION_POWER_THRESHOLD),
+            m_TimeSpawn_f64(100),
+            m_ConsumedPowerThreshold_f64(3800),
             m_StartOfTimeFrame(),
             m_EndOfTimeFrame()
         {}
@@ -34,8 +32,8 @@ namespace istvan_richard
         CEnergyConsumptionParamConfig(const CEnergyConsumptionParamConfig& f__r):
             m_UnitOfThreshold_s("Watts"),
             m_UnitOfTimeSpawn_s("Sec"),
-            m_TimeSpawn_f64(DEAFULT_ENERGY_CONSUMPTION_TIME_SPAWN),
-            m_ConsumedPowerThreshold_f64(DEAFULT_ENERGY_CONSUMPTION_POWER_THRESHOLD),
+            m_TimeSpawn_f64(100),
+            m_ConsumedPowerThreshold_f64(3800),
             m_StartOfTimeFrame(),
             m_EndOfTimeFrame()
         {

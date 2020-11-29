@@ -15,10 +15,6 @@
 #include <vector>
 #include <math.h>
 
-#define IN 
-#define OUT 
-#define IN_OUT 
-
 namespace istvan_richard
 {
     class DailyDateTime
