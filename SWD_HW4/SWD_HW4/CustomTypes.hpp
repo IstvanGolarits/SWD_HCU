@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 #include <math.h>
+#include <iostream>
 
 #define IN 
 #define OUT 
@@ -26,11 +27,11 @@ namespace istvan_richard
     public:
         //Default C'Tor
         DailyDateTime() :
-            m_Day_s(" "),
-            m_NumOfDay_i32(0),
-            m_Hour_i32(0),
-            m_Minutes_i32(0),
-            m_Seconds_i32(0)
+            m_Day_s("ALL"),
+            m_NumOfDay_i32(10),
+            m_Hour_i32(12),
+            m_Minutes_i32(12),
+            m_Seconds_i32(12)
         {}
         //Setter, param C'Tor
         DailyDateTime(std::string f_day_s, int f_hour_i32, int f_minutes_i32, int f_seconds_i32) :
@@ -75,16 +76,16 @@ namespace istvan_richard
             else
             {
                 m_NumOfDay_i32 = 0;
-                std::printf("Error Occured, Wrong Name for Day\n");
+                std::cout<<"Error Occured, Wrong Name for Day, name is: "<< m_Day_s << "Corresponding hours: "<< m_Hour_i32 << std::endl;
             }
         }
         //Copy C'tor
         DailyDateTime(const DailyDateTime& f__r):
-            m_Day_s(" "),
-            m_NumOfDay_i32(0),
-            m_Hour_i32(0),
-            m_Minutes_i32(0),
-            m_Seconds_i32(0)
+            m_Day_s("ALL"),
+            m_NumOfDay_i32(10),
+            m_Hour_i32(12),
+            m_Minutes_i32(12),
+            m_Seconds_i32(12)
         {
             if (this != &f__r)
             {
@@ -243,7 +244,7 @@ namespace istvan_richard
     public:
         //C'Tor
        TimeStamp():
-           m_CurrentTime(std::string("MONDAY"), 12, 0, 0)
+           m_CurrentTime(std::string("MONDAY"), 0, 0, 1)
        {}
        void fUpdateCurrentTime(const DailyDateTime& f_CurrTimeInfo_r)
        {
@@ -360,12 +361,12 @@ namespace istvan_richard
                 l_it_p++)
             {
                 std::string l_refDay_s = l_it_p->fGetDay();
-                if (l_refDay_s == l_currentDay_s)
+                if (l_refDay_s == l_currentDay_s || "ALL" == l_refDay_s)
                 {
                     return *l_it_p;
                 }
             }
-            DailyDateTime l_ret(std::string(""), 0, 0, 0);
+            DailyDateTime l_ret(std::string("ERROR_MATCH_FINDING_GETCURRENTDAY."), 0, 0, 0);
             return l_ret;
             std::printf("NoMatchingDaysInArray");
         }

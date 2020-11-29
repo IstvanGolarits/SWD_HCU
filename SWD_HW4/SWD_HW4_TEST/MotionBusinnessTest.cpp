@@ -36,6 +36,8 @@ namespace istvan_richard
         CMotionCommInfo         l_MotionCommInfo(10.F, 100, true);
         CMotionDetectionParam   l_MotionParam;
         TimeStamp               l_currentTime;
+        DailyDateTime           l_updatedTime(std::string("MONDAY"), 12, 0, 0);
+        l_currentTime.fUpdateCurrentTime(l_updatedTime);
         CMotion2SysInfo         l_motionToSysInfo;
         CMotionBusinnessLogic   l_businesslogic(l_MotionCommInfo, l_MotionParam, l_currentTime, l_motionToSysInfo);
         //ACT
@@ -94,7 +96,7 @@ namespace istvan_richard
         //ACT
         l_businesslogic.fUpdateMotionLogic();
         //ASSERT
-        EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::ALL_OK);
+        EXPECT_EQ(l_motionToSysInfo.fGetMotionState(), CMotion2SysInfo::E_StateOfMotionBussiness::SUS);
     }
 
     TEST(MotionBusinnessTest, TestingStartOfValidMotionInTime)
