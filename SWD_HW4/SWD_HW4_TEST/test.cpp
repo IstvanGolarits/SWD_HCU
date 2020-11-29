@@ -7,5 +7,6 @@ TEST(TestCaseName, TestName) {
 
 TEST(TestCaseName, FailingTest)
 {
+    EXPECT_NE(1, 1);
     EXPECT_TRUE(false);
 }

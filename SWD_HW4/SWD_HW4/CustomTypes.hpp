@@ -265,7 +265,9 @@ namespace istvan_richard
         //default C'tor
         DateTime():
             m_Days_adt()
-        {}
+        {
+            m_Days_adt.push_back(DailyDateTime(std::string("ALL"), 12, 0, 0));
+        }
         //Param C'tors
         DateTime(DailyDateTime &f_DateTime_r) :
             m_Days_adt()

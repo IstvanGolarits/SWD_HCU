@@ -27,8 +27,8 @@ namespace istvan_richard
             m_UnitOfTimeSpawn_s("Sec"),
             m_TimeSpawn_f64(DEAFULT_ENERGY_CONSUMPTION_TIME_SPAWN),
             m_ConsumedPowerThreshold_f64(DEAFULT_ENERGY_CONSUMPTION_POWER_THRESHOLD),
-            m_StartOfTimeFrame(),
-            m_EndOfTimeFrame()
+            m_StartOfTimeFrame(DailyDateTime(std::string("ALL"), 7, 0, 0)),
+            m_EndOfTimeFrame(DailyDateTime(std::string("ALL"), 21, 0, 0))
         {}
 
         CEnergyConsumptionParamConfig(const CEnergyConsumptionParamConfig& f__r):
@@ -36,8 +36,8 @@ namespace istvan_richard
             m_UnitOfTimeSpawn_s("Sec"),
             m_TimeSpawn_f64(DEAFULT_ENERGY_CONSUMPTION_TIME_SPAWN),
             m_ConsumedPowerThreshold_f64(DEAFULT_ENERGY_CONSUMPTION_POWER_THRESHOLD),
-            m_StartOfTimeFrame(),
-            m_EndOfTimeFrame()
+            m_StartOfTimeFrame(DailyDateTime(std::string("ALL"), 7, 0, 0)),
+            m_EndOfTimeFrame(DailyDateTime(std::string("ALL"), 21, 0, 0))
         {
             if (this != &f__r)
             {

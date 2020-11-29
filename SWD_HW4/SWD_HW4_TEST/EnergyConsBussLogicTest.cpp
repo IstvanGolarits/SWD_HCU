@@ -53,7 +53,15 @@ namespace istvan_richard
         //ASSERT
         EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::SUS);
         //ARRANGE
-        l_dailyTime = { std::string("MONDAY"), 15, 0, 30 };
+        l_dailyTime = { std::string("MONDAY"), 15, 1, 39 };
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
+        //ACT
+        l_energyConsumption.fUpdateEnergyConsumptionLogic();
+        //ASSERT
+        EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::SUS);
+        //ARRANGE
+        l_dailyTime = { std::string("MONDAY"), 15, 1, 41 };
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
@@ -93,6 +101,7 @@ namespace istvan_richard
         EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::SUS);
         //ARRANGE
         l_dailyTime = { std::string("MONDAY"), 15, 0, int(l_EneryConsumpParamConfig.fGetTimeSpawn()-1U) };
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
@@ -100,6 +109,7 @@ namespace istvan_richard
         //ARRANGE
         l_EnergyConsumpSensor.fReadConsumedPower(l_EneryConsumpParamConfig.fGetConsumedPowerThreshold() - 1);
         l_dailyTime = { std::string("MONDAY"), 15, 0, int(l_EneryConsumpParamConfig.fGetTimeSpawn() + 1U) };
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
@@ -129,6 +139,7 @@ namespace istvan_richard
         EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::ALL_OK);
         //ARRANGE
         l_dailyTime = { std::string("MONDAY"), 17, 0, 0 };
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
@@ -138,6 +149,8 @@ namespace istvan_richard
     //Partially test ID_1036
     TEST(EnergyConsumptionLogicTest, TestingTooHighEnergyOutOfTime)
     {
+        // Basically same as "TestingTooHighEnergyInTime", only in out of time use-cases, there is no time-threshold (becuase if granny is asleep
+        // but power consumption is high, it is definetly an issue!)
         //ARRANGE
         CEnergyConsumptionParamConfig   l_EneryConsumpParamConfig;
         CEnergyConsumptionSensorConfig  l_EnergyConsumpSensorConfig;
@@ -155,9 +168,17 @@ namespace istvan_richard
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
-        EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::SUS);
+        EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::WARNING);
         //ARRANGE
-        l_dailyTime = { std::string("MONDAY"), 15, 0, 30 };
+        l_dailyTime = { std::string("MONDAY"), 22, 1, 39 };
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
+        //ACT
+        l_energyConsumption.fUpdateEnergyConsumptionLogic();
+        //ASSERT
+        EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::WARNING);
+        //ARRANGE
+        l_dailyTime = { std::string("MONDAY"), 22, 1, 41};
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
@@ -173,15 +194,15 @@ namespace istvan_richard
         /// 3.: Consumption is lower than threshold - time -> Just after threshold
         /// 
         /// Expectations:
-        /// 1.: SUS
-        /// 2.: SUS
+        /// 1.: WARNING - cause out of time cases have no time-threshold in case of too high power!
+        /// 2.: WARNING
         /// 3.: ALL_OK
 
         //ARRANGE
         CEnergyConsumptionParamConfig   l_EneryConsumpParamConfig;
         CEnergyConsumptionSensorConfig  l_EnergyConsumpSensorConfig;
         CEnergyConsumptionSensorComm    l_EnergyConsumpSensor(4000);
-        DailyDateTime                   l_dailyTime(std::string("MONDAY"), 22, 0, 0);
+        DailyDateTime                   l_dailyTime(std::string("MONDAY"), 23, 0, 0);
         TimeStamp                       l_TimeStamp;
         l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
         CEnergyConsump2SysInfo          l_EnergyCons2Sysinfo;
@@ -194,16 +215,18 @@ namespace istvan_richard
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
-        EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::SUS);
+        EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::WARNING);
         //ARRANGE
         l_dailyTime = { std::string("MONDAY"), 15, 0, int(l_EneryConsumpParamConfig.fGetTimeSpawn() - 1U) };
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
-        EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::SUS);
+        EXPECT_EQ(l_EnergyCons2Sysinfo.fGetEnergyState(), CEnergyConsump2SysInfo::E_EnergyConsumptionState::WARNING);
         //ARRANGE
         l_EnergyConsumpSensor.fReadConsumedPower(l_EneryConsumpParamConfig.fGetConsumedPowerThreshold() - 1);
         l_dailyTime = { std::string("MONDAY"), 15, 0, int(l_EneryConsumpParamConfig.fGetTimeSpawn() + 1U) };
+        l_TimeStamp.fUpdateCurrentTime(l_dailyTime);
         //ACT
         l_energyConsumption.fUpdateEnergyConsumptionLogic();
         //ASSERT
