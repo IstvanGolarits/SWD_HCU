@@ -18,12 +18,13 @@ namespace istvan_richard
     public:
         enum class E_StateOfMotionBussiness
         {
-            OFF =0,                     // Feature is OFF
-            ALL_OK,                     // Everything is fine
-            SUS,                        // There was something suspicious (use cases:
-            WARNING_IN_TIME,            // We did NOT detect movemoent for at least threshold amount of time, in set timewindow
-            WARNING_OUT_OF_TIME,        // We have detected movement, outside of set time window (out by more than paramThreshold amount of time)
-            ERROR                       //Some error occured in the feature.
+            OFF                    =  0,                   // Feature is OFF
+            ALL_OK                 =  1,                   // Everything is fine
+            SUS                    =  2,                   // There was something suspicious (use cases:
+            WARNING_IN_TIME        =  3,                   // We did NOT detect movemoent for at least threshold amount of time, in set timewindow
+            WARNING_OUT_OF_TIME    =  4,                   // We have detected movement, outside of set time window (out by more than paramThreshold amount of time)
+            ERROR                  =  5,                   //Some error occured in the feature.
+            UNDEFINED              =  99
         };
         //C'Tor
         CMotion2SysInfo():

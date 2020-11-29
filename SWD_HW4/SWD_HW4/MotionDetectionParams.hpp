@@ -11,6 +11,12 @@
 #ifndef MOTION_DETECTION_PARAM_HPP
 #define MOTION_DETECTION_PARAM_HPP
 
+#define DEFAULT_SAMPLING_RATE 1
+#define DEFAULT_OUT_OF_NORMAL_TIME_THRESHOLD 10
+#define DEFAULT_NORMAL_TIME_THRESHOLD 10
+#define DEAFULT_NO_RESPONSE_THRESHOLD 10
+#define DEAFULT_NUMBER_OF_RETRY 3
+
 #include <stdlib.h>
 #include <string>
 #include <vector>
@@ -23,23 +29,23 @@ namespace istvan_richard
     public:
 
         CMotionDetectionParam() :
-            m_StartOfMonitoring_dt               (DailyDateTime(std::string("ALL"), 7, 0, 0)),
-            m_EndOfMonitoring_dt                 (DailyDateTime(std::string("ALL"), 21, 0, 0)),
-            m_SamplingRate_i32                   (1),
-            m_OutOfNormalTimeWarningThreshold_i32(10),
-            m_NormalTimeWarningThreshold_i32    (10),
-            m_NoResponseTimeThreshold_i32       (10),
-            m_NumberOfRetry_i32                 (2)
+            m_StartOfMonitoring_dt                (DailyDateTime(std::string("ALL"), 7, 0, 0)),
+            m_EndOfMonitoring_dt                  (DailyDateTime(std::string("ALL"), 21, 0, 0)),
+            m_SamplingRate_i32                    (DEFAULT_SAMPLING_RATE),
+            m_OutOfNormalTimeWarningThreshold_i32 (DEFAULT_OUT_OF_NORMAL_TIME_THRESHOLD),
+            m_NormalTimeWarningThreshold_i32      (DEFAULT_NORMAL_TIME_THRESHOLD),
+            m_NoResponseTimeThreshold_i32         (DEAFULT_NO_RESPONSE_THRESHOLD),
+            m_NumberOfRetry_i32                   (DEAFULT_NUMBER_OF_RETRY)
         {}
 
         CMotionDetectionParam(const CMotionDetectionParam& f__r) :
             m_StartOfMonitoring_dt(DailyDateTime(std::string(" "), 7, 0, 0)),
             m_EndOfMonitoring_dt(DailyDateTime(std::string(" "), 21, 0, 0)),
-            m_SamplingRate_i32(1),
-            m_OutOfNormalTimeWarningThreshold_i32(10),
-            m_NormalTimeWarningThreshold_i32(10),
-            m_NoResponseTimeThreshold_i32(10),
-            m_NumberOfRetry_i32(2)
+            m_SamplingRate_i32(DEFAULT_SAMPLING_RATE),
+            m_OutOfNormalTimeWarningThreshold_i32(DEFAULT_OUT_OF_NORMAL_TIME_THRESHOLD),
+            m_NormalTimeWarningThreshold_i32(DEFAULT_NORMAL_TIME_THRESHOLD),
+            m_NoResponseTimeThreshold_i32(DEAFULT_NO_RESPONSE_THRESHOLD),
+            m_NumberOfRetry_i32(DEAFULT_NUMBER_OF_RETRY)
         {
             if (this != &f__r)
             {
