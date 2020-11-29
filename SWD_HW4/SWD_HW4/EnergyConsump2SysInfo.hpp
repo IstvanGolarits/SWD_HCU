@@ -18,11 +18,12 @@ namespace istvan_richard
     public:
         enum class E_EnergyConsumptionState
         {
-            OFF = 0,
-            ALL_OK,
-            SUS,
-            WARNING,
-            ERROR
+            OFF       =  0,
+            ALL_OK    =  1,
+            SUS       =  2,
+            WARNING   =  3,
+            ERROR     =  4,
+            UNDEFINED = 99
         };
 
         CEnergyConsump2SysInfo():

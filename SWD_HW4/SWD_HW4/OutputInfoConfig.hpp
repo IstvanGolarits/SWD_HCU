@@ -20,13 +20,19 @@
 
 namespace istvan_richard
 {
+    enum class E_ComType
+    {
+        OutputCommTypeEmail = 0,
+        OutputCommTypePhone =1,
+        OutputCommTypeWebUI =2,
+        OutputNotDefined = 99
+
+    };
+
     class COutputInfoConfig
     {
     public:
-        enum class E_ComType
-        {
-
-        };
+       
 
         struct Contact
         {

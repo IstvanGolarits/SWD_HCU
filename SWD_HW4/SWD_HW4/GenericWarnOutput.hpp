@@ -15,29 +15,54 @@
 
 namespace istvan_richard
 {
+    enum class E_MotionWarning: unsigned short int
+    {
+        MotionWarningOK                    =  0,
+        MotionWarningInsideDailyTimeFrame  =  1,
+        MotionWarningOutsideDailyTimeFrame =  2,
+        MotioNWarningInsideNightTimeFrame  =  3,
+        MotionWarningNightTimeFrame        =  4,
+        MotionWarningSuspicious            = 10,
+        MotionWarningUndefined             = 99
+    };
+
+    enum class E_EnergyConsumptionWarning: unsigned short int
+    {
+        EnergyConsumptionWarningOK                     =  0,
+        EnergyConsumptionWarningInsideDailyTimeFrame   =  1,
+        EnergyConsumptionWarningOutsideDailyTimeFrame  =  2,
+        EnergyConsumptionWarningInsideNightTimeFrame   =  3,
+        EnergyConsumptionWarningOutsideNightTimeFrame  =  4,
+        EnergyConsumptionWarningSuspicious             = 10,
+        EnergyConsumptionUndefined                     = 99
+
+    };
+
+    enum class E_Acknowlegdement : unsigned short int
+    {
+        AcknowledgementOK         =  0,
+        AcknowledgementSent       =  1,
+        AcknowledgementReceived   =  2,
+        AcknowledgementWarning    =  3,
+        AcknowledgementUndefined  = 99
+    };
+
+    enum class E_ErrorType : unsigned short int
+    {
+        ErrorOK                       =  0,
+        ErrorMotionRelated            =  1,
+        ErrorEnergyConsumptionRelated =  2,
+        ErrorSystemRelated            =  3,
+        ErrorCommunicationRelated     =  4,
+        ErrorUndefined                = 99
+
+    };
+
     class CGenericWarningOutput
     {
     public:
-        enum class E_MotionWarning
-        {
-
-        };
-
-        enum class E_EnergyConsumptionWarning
-        {
-
-        };
-
-        enum class E_Acknowlegdement
-        {
-
-        };
-
-        enum class E_ErrorType
-        {
-
-        };
-
+       
+        CGenericWarningOutput();
         const E_MotionWarning             fGetMotionWarningStateGet() const;
         const E_EnergyConsumptionWarning  fGetEnergyConsumptionStateGet() const;
         const E_Acknowlegdement           fGetAcknowledgementGet() const;

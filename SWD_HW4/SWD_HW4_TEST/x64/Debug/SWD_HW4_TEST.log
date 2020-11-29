@@ -1,0 +1,9 @@
+﻿  pch.cpp
+  SystemMonitoringTest.cpp
+  test.cpp
+  EnergyConsBussLogicTest.cpp
+  MotionBusinnessTest.cpp
+  Generating Code...
+EnergyConsBussLogicTest.obj : error LNK2019: unresolved external symbol "public: void __cdecl istvan_richard::CEnergyConsumptionLogic::fUpdateEnergyConsumptionLogic(void)" (?fUpdateEnergyConsumptionLogic@CEnergyConsumptionLogic@istvan_richard@@QEAAXXZ) referenced in function "private: virtual void __cdecl istvan_richard::EnergyConsumptionLogicTest_TestingDefaults_Test::TestBody(void)" (?TestBody@EnergyConsumptionLogicTest_TestingDefaults_Test@istvan_richard@@EEAAXXZ)
+MotionBusinnessTest.obj : error LNK2019: unresolved external symbol "public: void __cdecl istvan_richard::CMotionBusinnessLogic::fUpdateMotionLogic(void)" (?fUpdateMotionLogic@CMotionBusinnessLogic@istvan_richard@@QEAAXXZ) referenced in function "private: virtual void __cdecl istvan_richard::MotionBusinnessTest_TestingDefaults_Test::TestBody(void)" (?TestBody@MotionBusinnessTest_TestingDefaults_Test@istvan_richard@@EEAAXXZ)
+C:\Users\István\Documents\01_Istvan\02_Projektek\SWD_HCU\SWD_HW4\x64\Debug\SWD_HW4_TEST.exe : fatal error LNK1120: 2 unresolved externals
