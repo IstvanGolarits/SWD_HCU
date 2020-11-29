@@ -68,8 +68,16 @@ namespace istvan_richard
         const E_Acknowlegdement           fGetAcknowledgementGet() const;
         const E_ErrorType                 fGetErrorTypeGet() const;
 
-        void fUpdateWarnStates(E_MotionWarning& f_ref1_r, E_EnergyConsumptionWarning& f_ref2_r, E_Acknowlegdement& f_ref3_r,
-            E_ErrorType& f_ref4_r);
+        void fUpdateWarnStates(
+            const E_MotionWarning& f_ref1_r, 
+            const E_EnergyConsumptionWarning& f_ref2_r, 
+            const E_Acknowlegdement& f_ref3_r,
+            const E_ErrorType& f_ref4_r);
+
+        void fUpdateMotionWarn(const E_MotionWarning& f_ref1_r)
+        {
+            m_MotionWarningState_e = f_ref1_r;
+        }
     private:
         E_MotionWarning             m_MotionWarningState_e;
         E_EnergyConsumptionWarning  m_EnergyConsumptionState_e;
