@@ -7,3 +7,17 @@
 /// --------------------------------------------------------
 /// Purpose of file: 
 /// --------------------------------------------------------
+
+
+#ifndef COMM_TYPE_HPP
+#define COMM_TYPE_HPP
+
+namespace istvan_richrad
+{
+    class CCommTypeConfig
+    {
+
+    };
+
+}// end of namespace
+#endif

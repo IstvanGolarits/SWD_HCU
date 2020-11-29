@@ -22,11 +22,14 @@ namespace istvan_richard
     {
     public:
         CMainLogic():
+            m_TimeStamp(),
             m_MotionComm(),
             m_MotionDetectParam(),
-            m_MotionBusinness(m_MotionComm, m_MotionDetectParam)
+            m_MotionBusinness(m_MotionComm, m_MotionDetectParam, m_TimeStamp, m_Motion2SysInfo)
         {}
     private:
+        TimeStamp               m_TimeStamp;
+        CMotion2SysInfo         m_Motion2SysInfo;
         CMotionCommInfo         m_MotionComm;
         CMotionDetectionParam   m_MotionDetectParam;
         CMotionBusinnessLogic   m_MotionBusinness;

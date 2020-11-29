@@ -8,21 +8,38 @@
 /// Purpose of file:
 /// --------------------------------------------------------
 
-#include <stdlib.h>
-#include <string>
 
 #ifndef ENERGY_CONSUMPTION_SENSOR_CONFIG_HPP
 #define ENERGY_CONSUMPTION_SENSOR_CONFIG_HPP
+
+#include <stdlib.h>
+#include <string>
 
 namespace istvan_richard
 {
     class CEnergyConsumptionSensorConfig
     {
     public:
-        float fGetResolution();
-        float fGetMinRange();
-        float fGetMaxRange();
-        float fGetSamplingRate();
+        const float fGetResolution() const
+        {
+            return m_Resolution_f64;
+        }
+        const float fGetMinRange() const
+        {
+            return m_MinRange_f64;
+        }
+        const float fGetMaxRange() const
+        {
+            return m_MaxRange_f64;
+        }
+        const float fGetSamplingRate() const 
+        {
+            return m_SamplingRate_f64;
+        }
+        const std::string fGetSensorType() const
+        {
+            return m_SensorType_s;
+        }
     private:
         std::string     m_SensorType_s;
         float           m_Resolution_f64;
