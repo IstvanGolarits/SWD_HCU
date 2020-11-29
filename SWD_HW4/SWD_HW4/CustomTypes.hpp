@@ -16,8 +16,6 @@
 
 namespace istvan_richard
 {
-	
-
     class DateTime
     {
     public:
